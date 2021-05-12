@@ -1,0 +1,101 @@
+@font-face{
+  font-family:Lovelo-Black;
+  src:url('fonts/Lovelo-Black.ttf');
+  font-style: normal;
+  font-weight: normal;
+}
+
+body{
+  background: #E5E5E5;
+  font-family: Lovelo-Black;
+  padding: 2%;
+
+}
+.inline{
+  display:inline-block;
+}
+.shadows{
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+.center{
+  text-align: center;
+}
+.margin-top{
+  margin-top:3.125rem;
+}
+.previous {
+  color: black;
+  text-decoration: none;
+  display: inline-block;
+  padding: 6px 15px;
+  font-size: 25px;
+  margin-left: 0.875rem;
+}
+.previous:hover{
+  background-color: #f1f1f1;
+}
+.round {
+  border-radius: 50%;
+}
+.content{
+  padding-top:0;
+  padding-left:5%;
+}
+.heading-logo{
+  height:2.5rem;
+  width:2.5rem;
+  margin-bottom: 0.845rem;
+  margin-left: 1rem;
+}
+.mydoubt-heading{
+  height:25px;
+  font-size: 1.5625rem;
+  width:50%;
+
+}
+.active-doubts-div, .past-doubts-div{
+  height:3.4375rem;
+  width:24.25rem;
+  background:#FFFFFF;
+  color: #EA9215;
+  text-align: center;
+  padding:1%;
+  border-radius: 15px;
+  margin-left: 27.6875rem;
+  margin-bottom: 3%;
+
+}
+.doubts-div{
+  width:70.5rem;
+  height:3.5rem;
+  background:#FFFFFF;
+  padding:0.8%;
+  border-radius: 15px;
+  margin-left: 2%;
+  margin-bottom: 2%;
+
+}
+.question-div{
+  width:65%;
+}
+
+
+.button-1{
+  height:2.25rem;
+  width:7.875rem;
+  background:#EEEEEE;
+  border-radius: 20px;
+  color:#EA9215;
+  margin-right:1.0625rem;
+
+}
+.notification{
+  height:2.75rem;
+  width:2.75rem;
+  padding:0.5px 7px;
+  background-color: red;
+  border-radius: 50%;
+  text-decoration: none;
+  color:#EEEEEE;
+  margin-left: 3.5625rem;
+}

@@ -1,0 +1,239 @@
+@font-face {
+  font-family: Lovelo-Black;
+  src: url('fonts/Lovelo-Black.ttf');
+  font-style: normal;
+  font-weight: normal;
+}
+
+body {
+  font-family: Lovelo-Black;
+}
+
+p {
+  text-align: center;
+}
+.content{
+  padding: 0.5% 6%;
+
+}
+.top-div{
+  display: inline-grid;
+  grid-template-columns: 22.5rem 22.5rem;
+  grid-gap: 45.5rem;
+  margin-bottom: 3%;
+}
+.heading {
+  padding-right: 10px;
+  margin-right: 5%;
+}
+
+.container-1, .container-2, .container-3 {
+  display: flex;
+}
+
+.container-2 {
+  margin-top: 2%;
+}
+
+.input-group {
+  width:35rem;
+  margin-top: 5px;
+  position: relative;
+  right: 40%;
+
+}
+
+.form {
+
+  border-radius: 10px;
+  border: 0px solid;
+  border-top-right-radius: 0px;
+}
+
+.input-group-text {
+
+  background-color: #FFFFFF;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+
+::placeholder {
+  color: #EA9215 !important;
+  text-align: right;
+}
+
+/* Flex-stats */
+.stats{
+  padding:5% 8%;
+  transform:scale(1.2,1.2);
+}
+
+.flexbox {
+  width: 22.5rem;
+  height: 11.25rem;
+  background: #FFFFFF;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 15px;
+  margin-right: 20px;
+}
+
+.flex-heading {
+  float: right;
+  position: relative;
+  top: 5px;
+  right: 10px;
+  color: #EA9215;
+  text-align: center;
+  width: 70%;
+}
+
+.flex-image {
+  height: 80px;
+  width: 80px;
+  background-color: #EEEEEE;
+  padding: 5%;
+  border-radius: 15px;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  position: relative;
+  left: 10px;
+}
+
+.sigma {
+  float: left;
+  height: 80px;
+  width: 80px;
+  position: relative;
+  top: 50px;
+  left: 10px;
+}
+
+.Number-of-questions {
+  float: left;
+  position: relative;
+  top: 18px;
+  left: 40px;
+  font-size: 3.5rem;
+  align-content: center;
+  width: 70%;
+}
+
+.efficiency-meter {
+  height:20px;
+  width: 50%;
+  position: relative;
+  top:125px;
+  left: 120px;
+  background-color: #EEEEEE;
+  border-radius: 15px;
+}
+
+
+.graphflex {
+  width: 46.25rem;
+  height: 26.25rem;
+  background: #FFFFFF;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 15px;
+  margin-right: 20px;
+}
+
+.graphflex-heading {
+  display: inline-block;
+  height: 60px;
+  width: 245px;
+  position: relative;
+  left: 1.938rem;
+  top: 1.063rem;
+  background-color: #EEEEEE;
+  border-radius: 15px;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.container {
+  float: left;
+  display: inline-grid;
+  grid-template-columns: 100px 100px;
+  margin-left: 31px;
+  margin-top: 50px;
+  padding: 0px;
+  grid-gap: 29px;
+}
+
+.stack-logo {
+  height: 20px;
+  width: 20px;
+  margin-right: 10px;
+}
+
+.question-division {
+  text-align: center;
+  position: relative;
+  top: 20px;
+}
+
+.divisionbox {
+  padding:5%;
+  height: 4.125rem;
+  width: 7.375rem;
+  background-color: #EEEEEE;
+  border-radius: 15px;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  column-gap: 10px;
+  margin-right: 20px;
+}
+
+.division-name {
+  color: #EA9215;
+  text-align: center;
+  width:100%;
+}
+
+.graph-image {
+  position: relative;
+  bottom: 370px;
+  right: 28px;
+  float: right;
+  width: 402px;
+  height: 500px;
+}
+
+.platform-div {
+  height: 26.25rem;
+  width: 22.495rem;
+  background: #FFFFFF;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 15px;
+}
+
+.piechart-heading {
+  position: relative;
+  top: 20px;
+  left: 59px;
+  height: 60px;
+  width: 245px;
+  background-color: #EEEEEE;
+  border-radius: 15px;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.platform-division {
+  text-align: center;
+  position: relative;
+  top: 20px;
+}
+
+.piechart-image {
+  width: 20.5rem;
+  height: 20.188rem;
+  margin-left: 20px;
+  margin-top: 20px;
+}
+
+@media (max-width: 1366px) {
+  #portfolio {
+    padding: 2% 2% 2% 2%;
+    margin-left: 40px;
+    transform: scale(0.7);
+    transform-origin: 0 0;
+  }
+}

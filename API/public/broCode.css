@@ -1,0 +1,63 @@
+@font-face{
+  font-family:Lovelo-Black;
+  src:url('fonts/Lovelo-Black.ttf');
+  font-style: normal;
+  font-weight: normal;
+}
+
+#brocode{
+  padding: 2%;
+}
+
+body{
+  background: #E5E5E5;
+  font-family: Lovelo-Black;
+
+
+}
+.inline{
+  display:inline-block;
+}
+.shadows{
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+.content{
+padding:0 7%;
+}
+.brocode-heading{
+  height:25px;
+  font-size: 1.5625rem;
+  width:50%;
+}
+.brocode-container{
+  display:inline-grid;
+  grid-template-columns: 31.25rem 31.25rem ;
+  grid-gap:6.25rem;
+  margin:2.5625rem auto auto auto;
+}
+.brocode-container-box{
+  height:15.625rem;
+  background:#FFFFFF;
+  border-radius: 15px;
+  text-align: center;
+}
+.brocode-container-box-heading{
+  font-size: 35px;
+  color:#EA9215;
+  margin-top: 1.875rem;
+  margin-bottom: 1.123125rem;
+  text-align: center;
+}
+.bro-code-button{
+  height:8.625rem;
+  width:8.625rem;
+  background: #EEEEEE;
+  border-radius: 15px;
+  padding:3%;
+
+}
+.bro-code-img{
+  height:6.9375rem;
+  width:6.9375rem;
+
+}

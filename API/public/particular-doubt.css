@@ -1,0 +1,205 @@
+@font-face{
+  font-family:Lovelo-Black;
+  src:url('fonts/Lovelo-Black.ttf');
+  font-style: normal;
+  font-weight: normal;
+}
+
+body{
+  background: #E5E5E5;
+  font-family: Lovelo-Black;
+  padding:2%;
+
+
+}
+.inline{
+  display: inline-block;
+
+}
+
+.text-10{
+  font-size: 10px;
+  margin-bottom: 2px;
+}
+.text-70{
+  font-size: 70px;
+  margin-bottom: 2px;
+}
+.center-align{
+  text-align: center;
+}
+.left-align{
+  text-align: left;
+}
+.width{
+  width:45%;
+}
+
+.colon{
+  display: inline-block;
+  font-size: 15px;
+}
+.shadows{
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+.previous {
+  color: black;
+  font-weight: 900;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 25px;
+  padding:0px 9px;
+  margin-left:4rem;
+
+}
+.previous:hover{
+  background-color: #f1f1f1;
+}
+.round {
+  border-radius: 100%;
+}
+
+.particular-doubt-screen-heading-div{
+  width:24.0625rem;
+  height:5.0625rem;
+  background:#FFFFFF;
+  border-radius: 15px;
+  text-align: center;
+  padding: 2%;
+  margin-left:22.125rem;
+}
+.particular-doubt-container{
+  width:70.75rem;
+  height:34.6875rem;
+  background:#FFFFFF;
+  margin:0 5%;
+  border-radius: 15px;
+  transform: scale(0.8,0.8);
+}
+.container1{
+  padding:2%;
+  margin-left:1.2%;
+  display: inline-block;
+
+}
+.title{
+  width:36.8125rem;
+  height:3.6875rem;
+  background:#EEEEEE;
+  border-radius: 15px;
+  text-align: center;
+  padding:2%;
+}
+.content{
+  overflow-x: hidden;
+}
+.container-grid{
+  display: inline-grid;
+  grid-template-columns: 36.8125rem 36.8125rem;
+  grid-gap: 5.5rem;
+}
+.description-div{
+  width:36.8125rem;
+  height:12.25rem;
+  background:#EEEEEE;
+  margin-top:5%;
+  border-radius: 15px;
+  padding:2% 2%;
+}
+.div-heading{
+  width:15.375rem;
+  height:2.875rem;
+  background:#FFFFFF;
+  text-align: center;
+  margin-left:10.1875rem;
+  margin-bottom:5%;
+  border-radius: 15px;
+  padding:2%;
+}
+.container2{
+  padding:2%;
+  height:30.9rem;
+  float:right;
+
+}
+.container2-box1{
+  height:5.25rem;
+  width:26.375rem;
+  background:#EEEEEE;
+
+  border-radius: 15px;
+}
+
+.heart{
+  position:relative;
+  left:2.8125rem;
+  top:1.5rem;
+  height:2.1875rem;
+  width:2.1875rem;
+}
+.likes{
+  position:relative;
+  left:4.6875rem;
+  top:1.7rem;
+  color:#EA9215;
+}
+.chat{
+  height:2.1875rem;
+  width:2.1875rem;
+  position: relative;
+  left:12.6875rem;
+  top:1.5rem;
+
+}
+.chat-count{
+  position:relative;
+  left:14.875rem;
+  top:1.7rem;
+}
+.container2-box2{
+  height:2.45rem;
+  margin-top: 5%;
+
+}
+.button-1{
+  height:2.25rem;
+  width:7.875rem;
+  background:#EEEEEE;
+  border-radius: 20px;
+  color:#EA9215;
+  margin-right:1.0625rem;
+}
+.container2-box3{
+  width:26.375rem;
+  height:21.4375rem;
+  background:rgba(124,255,159,0.3);
+  margin-top:5%;
+  border-radius: 15px;
+  padding:5% 5.5%;
+}
+.post{
+  width:23.25rem;
+  height:8.25rem;
+  background:#FFFFFF;
+  border-radius: 15px;
+  margin-bottom: 8%;
+  padding:5% 6%;
+}
+.button-2{
+  height:2.25rem;
+  width:8.5625rem;
+  background:#EEEEEE;
+  border-radius: 20px;
+  color:#EA9215;
+  margin-right:1.0625rem;
+
+}
+.heart-2, .chat-2{
+  height:1.25rem;
+  width:1.25rem;
+  margin-right:0.6875rem;
+}
+.likes-2{
+  color:#EA9215;
+  margin-right: 2.1875rem;
+}
