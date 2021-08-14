@@ -16,6 +16,12 @@ Check the link --->  <a href="https://codeforces.com/apiHelp">Codeforces API Doc
 </ul>
 <br>
 <p align="center">
+  <img src="/API/public/images/home1.png">
+</p>
+<p align="center">
+  <img src="/API/public/images/home2.png">
+</p>
+<p align="center">
   <img src="/API/public/images/CB Dashboard.png">
 </p>
 <br>
