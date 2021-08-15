@@ -13,9 +13,48 @@ body {
   overflow-x: hidden;
 
 }
+.user-card{
+  text-align: left;
+  width:25rem;
+  margin: auto;
+}
+.centered {
+    padding-top: 50px;
+    padding-bottom: 3rem;
+    text-align: center;
 
+}
+
+.btn:hover{
+  color:#EA9215;
+}
+.about{
+  width:25rem;
+}
+.secret-text {
+  text-align: center;
+  font-size: 2rem;
+  color: #fff;
+  background-color: #000;
+}
+.error-card{
+  max-width:25rem;
+  padding:0.5rem;
+  font-size:0.625rem;
+  font-family: "Montserrat";
+  background-color: #FFC0CB;
+  border-color: #DC143C;
+  margin-bottom: 1rem;
+}
+.homelogo{
+  width:6.25rem;
+}
+.carousel-item{
+  padding:2% 15% 2% 15% !important;
+}
 a {
   text-decoration: none;
+  color:#000000;
 }
 
 .toShow {

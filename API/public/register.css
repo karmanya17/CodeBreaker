@@ -1,0 +1,21 @@
+#footer{
+  margin-top: 5rem;
+  text-align:center;
+  padding-top: 1rem;
+  background-color: #fff;
+  font-family: "Montserrat",sans-serif;
+  font-weight:lighter;
+
+}
+
+
+.container-footer{
+  padding:1% 7%;
+}
+
+.socialicon{
+  margin:20px 10px;
+}
+.btn{
+  margin-top: 1rem;
+}
