@@ -1,3 +1,4 @@
+
 require("dotenv").config();
 const express=require("express");
 const bodyParser=require("body-parser");
@@ -184,8 +185,13 @@ app.get("/dashboard",function(req,res){
       {
         console.log(err);
       }
+      if(!foundUser.codeforcehandle)                                 //If user got registered but haven't entered the codeforces handle.
+      {
+        res.redirect("/details");
+      }
       else{
-        if(foundUser)
+
+        if(foundUser && foundUser.codeforcehandle);
         {
           console.log(foundUser.codeforcehandle);
           const url1="https://codeforces.com/api/user.status?handle="+foundUser.codeforcehandle;
@@ -279,62 +285,74 @@ app.get("/dashboard",function(req,res){
                     efficiency=0;correct=0;dpCount=0;arrayCount=0;greedyCount=0;graphCount=0;treeCount=0;mathCount=0;bfCount=0;noTheoryCount=0;otherCount=0;
                 });
               });
-
-
-
-
-        });
-
-
-        });
+            });
+          });
 
         }
+
       }
     })
   }
+
   else{
-    res.redirect("/register");                                     //if not authenticated then redirect to login page again.
+    res.redirect("/login");                                     //if not authenticated then redirect to login page again.
   }
-
-
-
-
 });
+
+
 app.get("/CodeItOut",function(req,res){
-  const user="geetansh.atrey";
-  const url1="https://codeforces.com/api/user.status?handle="+user+"&from=1&count=30";
-  const url2="https://codeforces.com/api/user.info?handles="+user;
-  https.get(url1,function(response){
-    console.log(response.statusCode);
-    response.on("data",function(data){
-      const infoData=JSON.parse(data);
-      const history=[0];
-      const status=[];
-      for(let i=0;i<8;i++)
+
+  if(req.isAuthenticated()){                                      //Authenticate for the pages that have to be given access after login.
+    const user=req.user;
+    console.log(user);                                                    //geetansh.atrey
+    User.findById(user.id,function(err,foundUser){
+      if(err)
       {
-        history[i]=infoData.result[i].problem.name;
-        status[i]=infoData.result[i].verdict;
+        console.log(err);
+      }
+      else
+      {
+
+        const url1="https://codeforces.com/api/user.status?handle="+user.codeforcehandle+"&from=1&count=30";
+        const url2="https://codeforces.com/api/user.info?handles="+user.codeforcehandle;
+        https.get(url1,function(response){
+          console.log(response.statusCode);
+          response.on("data",function(data){
+            const infoData=JSON.parse(data);
+            const history=[0];
+            const status=[];
+            for(let i=0;i<8;i++)
+            {
+              history[i]=infoData.result[i].problem.name;
+              status[i]=infoData.result[i].verdict;
+            }
+
+            https.get(url2,function(response){
+              console.log(response.statusCode);
+              response.on("data",function(data){
+                const infoData=JSON.parse(data);
+                const titlepic=infoData.result[0].titlePhoto;
+
+                res.render("codeitout",{
+
+                  username:foundUser.name,
+                  history:history,
+                  statusinfo:status,
+                  profilepic:titlepic
+                });
+
+                  efficiency=0;correct=0;dpCount=0;arrayCount=0;greedyCount=0;graphCount=0;treeCount=0;mathCount=0;bfCount=0;noTheoryCount=0;otherCount=0;
+              });
+            });
+      });
+      });
       }
 
-      https.get(url2,function(response){
-        console.log(response.statusCode);
-        response.on("data",function(data){
-          const infoData=JSON.parse(data);
-          const titlepic=infoData.result[0].titlePhoto;
-
-          res.render("codeitout",{
-
-            username:user,
-            history:history,
-            statusinfo:status,
-            profilepic:titlepic
-          });
-
-            efficiency=0;correct=0;dpCount=0;arrayCount=0;greedyCount=0;graphCount=0;treeCount=0;mathCount=0;bfCount=0;noTheoryCount=0;otherCount=0;
-        });
-      });
-});
-});
+  });
+}
+else{
+  res.redirect("/login");
+}
 });
 app.get("/analysingyou",function(req,res){
   res.sendFile(__dirname+"/analysing-final.html");
