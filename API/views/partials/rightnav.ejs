@@ -1,0 +1,80 @@
+<nav id="r-nav"class="main-menu-r">
+        <ul>
+            <li class="navbar-brand">
+
+                  <img src="Logo/Notification.png" class="notification-logo">
+
+              <div class="element toHide">
+                <h2 class="account-name "> <%= username %> </h2>
+              </div>
+
+                <div class="circle-empty">
+                  <img class="avatarImg" src="<%= profilepic %>" alt="">
+                </div>
+
+
+            </li>
+            <li id="hideitem1" class="has-subnav nav-item">
+                <a  class="toHighlight" href="#">
+                  <img src="Logo/SH-1.png" class="navbar-logo">
+                </a>
+            </li>
+            <li id="hideitem2" class="has-subnav nav-item">
+                <a class="toHighlight" href="#">
+                  <img class="navbar-logo" src="images/50.png" alt="" />
+                </a>
+            </li>
+            <div id="hideitem3">
+              <div class="superhero-div">
+                  <a id="superheroCornerLink" href="#">SUPERHERO CORNER</a>
+              </div>
+
+              <li class="nav-item hero-div">
+                <button href="#" type="button" class=" btn colorTochange heroBox">
+                  <div class="superheroimg-div">
+                    <img src="Logo/SH-1.png" class="superheroImage">
+                  </div>
+                  <div class="algoCoder-text">
+                    <span class="heading-first">ALGO</span><span class="heading-second">CODER</span>
+                  </div>
+                  <div class="flex justify-content-around trophies toHide">
+                    <img class="trophie-image" src="Logo/45.png">
+                    <img class="trophie-image" src="Logo/45.png">
+                    <img class="trophie-image" src="Logo/45.png">
+                  </div>
+
+                </button>
+              </li>
+              <li class="history-header toHide">
+
+                <h1>HISTORY OF QUESTIONS</h1>
+              </li>
+              <li class="question-list toHide">
+              <% for(let i=0;i<8;i++) { %>
+              <%  if ( statusinfo[i] === "WRONG_ANSWER" ||statusinfo[i]=== "COMPILATION_ERROR" ){ %>
+                  <a type="button" href="https://codeforces.com/problemset/problem/<%= problemId[i] %>/<%= problemIndex[i] %>" class="btn question-box" style="background-color:#f55c47 ;">
+            <% }  else { %>
+                  <a type="button" href="https://codeforces.com/problemset/problem/<%= problemId[i] %>/<%= problemIndex[i] %>" class="btn question-box">
+            <%    }   %>
+
+                    <div class="question">
+                      <div class="circle">
+                        <img src="Logo/CodeForces.png" class="small-circle-img">
+                      </div>
+                      <div class="question-text">
+                        <p> <%= history[i] %> </p>
+                      </div>
+
+                    </div>
+                  </a>
+              <%  } %>
+
+
+
+            </li>
+            </div>
+
+        </ul>
+
+
+    </nav>
