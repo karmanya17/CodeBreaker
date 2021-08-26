@@ -214,6 +214,7 @@ app.get("/dashboard",function(req,res){
                   correct++;
                 }
                 let tag=infoData.result[i].problem.tags.length;
+
                 for(let j=0;j<tag;j++)
                 {
 
@@ -252,10 +253,15 @@ app.get("/dashboard",function(req,res){
               let efficiency=((correct/submission)*100).toFixed(2);
               const history=[0];
               const status=[];
+              const problemId=[];
+              const problemIndex=[];
+
               for(let i=0;i<8;i++)
               {
                 history[i]=infoData.result[i].problem.name;
                 status[i]=infoData.result[i].verdict;
+                problemId[i]=infoData.result[i].problem.contestId;
+                problemIndex[i]=infoData.result[i].problem.index;
               }
 
               https.get(url2,function(response){
@@ -280,6 +286,9 @@ app.get("/dashboard",function(req,res){
                     correctsubmission:correct,
                     efficiency:efficiency,
                     profilepic:titlepic,
+                    problemId:problemId,
+                    problemIndex:problemIndex
+
                   });
 
                     efficiency=0;correct=0;dpCount=0;arrayCount=0;greedyCount=0;graphCount=0;treeCount=0;mathCount=0;bfCount=0;noTheoryCount=0;otherCount=0;
@@ -312,41 +321,51 @@ app.get("/CodeItOut",function(req,res){
       }
       else
       {
-
-        const url1="https://codeforces.com/api/user.status?handle="+user.codeforcehandle+"&from=1&count=30";
-        const url2="https://codeforces.com/api/user.info?handles="+user.codeforcehandle;
+        const url1="https://codeforces.com/api/user.status?handle="+foundUser.codeforcehandle;
+        const url2="https://codeforces.com/api/user.info?handles="+foundUser.codeforcehandle;
         https.get(url1,function(response){
+          console.log(response.statusCode);
+          var chunks="";
+          response.on("data",function(chunk){
+              chunks +=chunk;
+          });
+          response.on("end",function(){
+            const infoData=JSON.parse(chunks);
+            console.log(infoData);
+        const history=[0];
+        const status=[];
+        const problemId=[];
+        const problemIndex=[];
+        for(let i=0;i<8;i++)
+        {
+          history[i]=infoData.result[i].problem.name;
+          status[i]=infoData.result[i].verdict;
+          problemId[i]=infoData.result[i].problem.contestId;
+          problemIndex[i]=infoData.result[i].problem.index;
+        }
+
+        https.get(url2,function(response){
           console.log(response.statusCode);
           response.on("data",function(data){
             const infoData=JSON.parse(data);
-            const history=[0];
-            const status=[];
-            for(let i=0;i<8;i++)
-            {
-              history[i]=infoData.result[i].problem.name;
-              status[i]=infoData.result[i].verdict;
-            }
+            const titlepic=infoData.result[0].titlePhoto;
 
-            https.get(url2,function(response){
-              console.log(response.statusCode);
-              response.on("data",function(data){
-                const infoData=JSON.parse(data);
-                const titlepic=infoData.result[0].titlePhoto;
+            res.render("codeitout",{
 
-                res.render("codeitout",{
-
-                  username:foundUser.name,
-                  history:history,
-                  statusinfo:status,
-                  profilepic:titlepic
-                });
-
-                  efficiency=0;correct=0;dpCount=0;arrayCount=0;greedyCount=0;graphCount=0;treeCount=0;mathCount=0;bfCount=0;noTheoryCount=0;otherCount=0;
-              });
+              username:foundUser.name,
+              history:history,
+              statusinfo:status,
+              profilepic:titlepic,
+              problemId:problemId,
+              problemIndex:problemIndex
             });
+
+              efficiency=0;correct=0;dpCount=0;arrayCount=0;greedyCount=0;graphCount=0;treeCount=0;mathCount=0;bfCount=0;noTheoryCount=0;otherCount=0;
+          });
+        });
       });
-      });
-      }
+  });
+  }
 
   });
 }
@@ -354,6 +373,8 @@ else{
   res.redirect("/login");
 }
 });
+
+
 app.get("/analysingyou",function(req,res){
   res.sendFile(__dirname+"/analysing-final.html");
 });
@@ -361,29 +382,89 @@ app.get("/brocode",function(req,res){
   res.render("broCode");
 });
 app.get("/CodeForces",function(req,res){
-  res.sendFile("codeforces");
+  res.render("codeforces");
 });
 app.get("/CodeForTheDay",function(req,res){
-  res.sendFile("CodeForTheDay");
+  if(req.isAuthenticated()){                                      //Authenticate for the pages that have to be given access after login.
+    const user=req.user;
+    console.log(user);                                                    //geetansh.atrey
+    User.findById(user.id,function(err,foundUser){
+      if(err)
+      {
+        console.log(err);
+      }
+      else
+      {
+        const url1="https://codeforces.com/api/user.status?handle="+foundUser.codeforcehandle;
+        const url2="https://codeforces.com/api/user.info?handles="+foundUser.codeforcehandle;
+        https.get(url1,function(response){
+          console.log(response.statusCode);
+          var chunks="";
+          response.on("data",function(chunk){
+              chunks +=chunk;
+          });
+          response.on("end",function(){
+            const infoData=JSON.parse(chunks);
+            console.log(infoData);
+        const history=[0];
+        const status=[];
+        const problemId=[];
+        const problemIndex=[];
+        for(let i=0;i<8;i++)
+        {
+          history[i]=infoData.result[i].problem.name;
+          status[i]=infoData.result[i].verdict;
+          problemId[i]=infoData.result[i].problem.contestId;
+          problemIndex[i]=infoData.result[i].problem.index;
+        }
+
+        https.get(url2,function(response){
+          console.log(response.statusCode);
+          response.on("data",function(data){
+            const infoData=JSON.parse(data);
+            const titlepic=infoData.result[0].titlePhoto;
+
+            res.render("CodeForTheDay",{
+
+              username:foundUser.name,
+              history:history,
+              statusinfo:status,
+              profilepic:titlepic,
+              problemId:problemId,
+              problemIndex:problemIndex
+            });
+
+              efficiency=0;correct=0;dpCount=0;arrayCount=0;greedyCount=0;graphCount=0;treeCount=0;mathCount=0;bfCount=0;noTheoryCount=0;otherCount=0;
+          });
+        });
+      });
+  });
+  }
+
+  });
+}
+else{
+  res.redirect("/login");
+}
 });
 
 app.get("/HackerRank",function(req,res){
-  res.sendFile("hackerrank");
+  res.render("hackerrank");
 });
 app.get("/Leetcode",function(req,res){
-  res.sendFile("leetcode");
+  res.render("leetcode");
 });
 app.get("/mydoubt",function(req,res){
-  res.sendFile("mydoubt");
+  res.render("mydoubt");
 });
 app.get("/history",function(req,res){
-  res.sendFile("history");
+  res.render("history");
 });
 app.get("/particularDoubt",function(req,res){
-  res.sendFile("particulardoubt");
+  res.render("particulardoubt");
 });
 app.get("/UpcomingContest",function(req,res){
-  res.sendFile("upcomingcontest");
+  res.render("upcomingcontest");
 });
 
 
