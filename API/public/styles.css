@@ -95,7 +95,7 @@ a {
 
 .account-name {
   font-size: 25px;
-  margin-left: 40px;
+  margin-left: 80px;
 }
 
 .divide {
@@ -128,12 +128,23 @@ a {
   float: left;
   margin-right: 8px;
 }
+.circle-1{
+  border: 4px solid #3A4750;
+  border-radius: 50%;
+  background-color: white;
+  color: white;
+  width: 30px;
+  height: 30px;
+  text-align: center;
+  float: left;
+  margin-right: 8px;
+}
 
 .circle-empty {
   display: inline-block;
   position: relative;
   top: 2px;
-  left: 5px;
+  left: 20px;
   height: 34px;
   width: 34px;
   border-radius: 50%;
@@ -392,6 +403,7 @@ margin-left: 28%;
     right: 11px;
   }
 
+
 }
 /* NAVBAR CSS */
 @font-face{
@@ -425,6 +437,9 @@ overflow:visible;
 }
 .main-menu-r:hover,nav.main-menu-r.expanded{
   width:400px;
+}
+.question-box:hover{
+  color: #FFFFFF;
 }
 
 .main-menu {
@@ -590,4 +605,7 @@ height: 100%;
   display:none;
   transition: 0.3s;
 
+}
+.question-text:hover{
+  color: #FFFFFF;
 }
