@@ -503,14 +503,139 @@ else{
 });
 
 
+app.get("/brocode",function(req,res){
+  if(req.isAuthenticated()){                                      //Authenticate for the pages that have to be given access after login.
+    const user=req.user;
+    console.log(user);                                                    //geetansh.atrey
+    User.findById(user.id,function(err,foundUser){
+      if(err)
+      {
+        console.log(err);
+      }
+      else
+      {
+        const url1="https://codeforces.com/api/user.status?handle="+foundUser.codeforcehandle;
+        const url2="https://codeforces.com/api/user.info?handles="+foundUser.codeforcehandle;
+        https.get(url1,function(response){
+          console.log(response.statusCode);
+          var chunks="";
+          response.on("data",function(chunk){
+              chunks +=chunk;
+          });
+          response.on("end",function(){
+            const infoData=JSON.parse(chunks);
+            console.log(infoData);
+        const history=[0];
+        const status=[];
+        const problemId=[];
+        const problemIndex=[];
+        for(let i=0;i<8;i++)
+        {
+          history[i]=infoData.result[i].problem.name;
+          status[i]=infoData.result[i].verdict;
+          problemId[i]=infoData.result[i].problem.contestId;
+          problemIndex[i]=infoData.result[i].problem.index;
+        }
+
+        https.get(url2,function(response){
+          console.log(response.statusCode);
+          response.on("data",function(data){
+            const infoData=JSON.parse(data);
+            const titlepic=infoData.result[0].titlePhoto;
+
+            res.render("broCode",{
+
+              username:foundUser.name,
+              history:history,
+              statusinfo:status,
+              profilepic:titlepic,
+              problemId:problemId,
+              problemIndex:problemIndex
+            });
+
+              efficiency=0;correct=0;dpCount=0;arrayCount=0;greedyCount=0;graphCount=0;treeCount=0;mathCount=0;bfCount=0;noTheoryCount=0;otherCount=0;
+          });
+        });
+      });
+  });
+  }
+
+  });
+}
+else{
+  res.redirect("/login");
+}
+});
+
+app.get("/mydoubts",function(req,res){
+  if(req.isAuthenticated()){                                      //Authenticate for the pages that have to be given access after login.
+    const user=req.user;
+    console.log(user);                                                    //geetansh.atrey
+    User.findById(user.id,function(err,foundUser){
+      if(err)
+      {
+        console.log(err);
+      }
+      else
+      {
+        const url1="https://codeforces.com/api/user.status?handle="+foundUser.codeforcehandle;
+        const url2="https://codeforces.com/api/user.info?handles="+foundUser.codeforcehandle;
+        https.get(url1,function(response){
+          console.log(response.statusCode);
+          var chunks="";
+          response.on("data",function(chunk){
+              chunks +=chunk;
+          });
+          response.on("end",function(){
+            const infoData=JSON.parse(chunks);
+            console.log(infoData);
+        const history=[0];
+        const status=[];
+        const problemId=[];
+        const problemIndex=[];
+        for(let i=0;i<8;i++)
+        {
+          history[i]=infoData.result[i].problem.name;
+          status[i]=infoData.result[i].verdict;
+          problemId[i]=infoData.result[i].problem.contestId;
+          problemIndex[i]=infoData.result[i].problem.index;
+        }
+
+        https.get(url2,function(response){
+          console.log(response.statusCode);
+          response.on("data",function(data){
+            const infoData=JSON.parse(data);
+            const titlepic=infoData.result[0].titlePhoto;
+
+            res.render("mydoubt",{
+
+              username:foundUser.name,
+              history:history,
+              statusinfo:status,
+              profilepic:titlepic,
+              problemId:problemId,
+              problemIndex:problemIndex
+            });
+
+              efficiency=0;correct=0;dpCount=0;arrayCount=0;greedyCount=0;graphCount=0;treeCount=0;mathCount=0;bfCount=0;noTheoryCount=0;otherCount=0;
+          });
+        });
+      });
+  });
+  }
+
+  });
+}
+else{
+  res.redirect("/login");
+}
+});
 
 
 app.get("/analysingyou",function(req,res){
   res.sendFile(__dirname+"/analysing-final.html");
 });
-app.get("/brocode",function(req,res){
-  res.render("broCode");
-});
+
 
 app.get("/CodeForTheDay",function(req,res){
   if(req.isAuthenticated()){                                      //Authenticate for the pages that have to be given access after login.
