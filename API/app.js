@@ -701,6 +701,87 @@ else{
 }
 });
 
+app.get("/history",function(req,res){
+  if(req.isAuthenticated()){                                      //Authenticate for the pages that have to be given access after login.
+    const user=req.user;
+    console.log(user);                                                    //geetansh.atrey
+    User.findById(user.id,function(err,foundUser){
+      if(err)
+      {
+        console.log(err);
+      }
+      else
+      {
+        const page=req.query.page;
+        const url1="https://codeforces.com/api/user.status?handle="+foundUser.codeforcehandle;
+        const url2="https://codeforces.com/api/user.info?handles="+foundUser.codeforcehandle;
+        https.get(url1,function(response){
+          console.log(response.statusCode);
+          var chunks="";
+          response.on("data",function(chunk){
+              chunks +=chunk;
+          });
+          response.on("end",function(){
+            const infoData=JSON.parse(chunks);
+            console.log(infoData);
+
+            console.log(page);
+            const limit=11;
+            const startIndex=(page-1)*limit;
+            const endIndex=page*limit;
+        let history=[0];
+        let status=[];
+        let problemId=[];
+        let problemIndex=[];
+        let programmingLang=[];
+        let length=infoData.result.length;
+        for(let i=0;i<length;i++)
+        {
+          history[i]=infoData.result[i].problem.name;
+          status[i]=infoData.result[i].verdict;
+          problemId[i]=infoData.result[i].problem.contestId;
+          problemIndex[i]=infoData.result[i].problem.index;
+          programmingLang[i]=infoData.result[i].programmingLanguage;
+        }
+        history=history.slice(startIndex,endIndex);
+        status=status.slice(startIndex,endIndex);
+        problemId=problemId.slice(startIndex,endIndex);
+        problemIndex=problemIndex.slice(startIndex,endIndex);
+        programmingLang=programmingLang.slice(startIndex,endIndex);
+        https.get(url2,function(response){
+          console.log(response.statusCode);
+          response.on("data",function(data){
+            const infoData=JSON.parse(data);
+            const titlepic=infoData.result[0].titlePhoto;
+
+            res.render("history",{
+
+              username:foundUser.name,
+              history:history,
+              statusinfo:status,
+              profilepic:titlepic,
+              problemId:problemId,
+              problemIndex:problemIndex,
+              language:programmingLang
+            });
+
+              efficiency=0;correct=0;dpCount=0;arrayCount=0;greedyCount=0;graphCount=0;treeCount=0;mathCount=0;bfCount=0;noTheoryCount=0;otherCount=0;
+          });
+        });
+      });
+  });
+  }
+
+  });
+}
+else{
+  res.redirect("/login");
+}
+});
+
+
+
+
 app.get("/HackerRank",function(req,res){
   res.render("hackerrank");
 });
@@ -710,9 +791,7 @@ app.get("/Leetcode",function(req,res){
 app.get("/mydoubt",function(req,res){
   res.render("mydoubt");
 });
-app.get("/history",function(req,res){
-  res.render("history");
-});
+
 app.get("/particularDoubt",function(req,res){
   res.render("particulardoubt");
 });
