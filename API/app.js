@@ -135,7 +135,7 @@ function(req,res){
 });
 app.post("/details",function(req,res){
   console.log(req.user.id);
-  console.log(req.body.userhandle);
+//  console.log(req.body.userhandle);
   const submittedhandle=req.body.userhandle;
   const submittedname=req.body.username;
   User.findById(req.user.id,function(err,foundUser){
