@@ -134,7 +134,7 @@ function(req,res){
   res.redirect("/details");
 });
 app.post("/details",function(req,res){
-  console.log(req.user.id);
+//  console.log(req.user.id);
 //  console.log(req.body.userhandle);
   const submittedhandle=req.body.userhandle;
   const submittedname=req.body.username;
