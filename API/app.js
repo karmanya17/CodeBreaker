@@ -206,7 +206,7 @@ app.get("/dashboard",function(req,res){
               const infoData=JSON.parse(chunks);
               console.log(infoData);
               const submission=infoData.result.length;
-              console.log(submission);
+             // console.log(submission);
               for(let i=0;i<submission;i++)
               {
                 if(infoData.result[i].verdict==="OK")
