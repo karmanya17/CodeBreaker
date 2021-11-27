@@ -313,7 +313,7 @@ app.get("/CodeItOut",function(req,res){
 
   if(req.isAuthenticated()){                                      //Authenticate for the pages that have to be given access after login.
     const user=req.user;
-    console.log(user);                                                    //geetansh.atrey
+    //console.log(user);                                                    //geetansh.atrey
     User.findById(user.id,function(err,foundUser){
       if(err)
       {
